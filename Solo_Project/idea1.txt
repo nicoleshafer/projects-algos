@@ -1,0 +1,26 @@
+Create a webiste for a business:
+
+HP_Store
+
+Coming Soon...
+
+Create a Harry Potter experience:
+Location: London
+An experience located in London that will allow you to go to multiple different adventures:
+-One room has Merch (including brooms)
+-One room is a Bar
+-One room is a restuarant 
+-Coffe Shop
+-Take a potions class
+
+
+
+Different aspects to the website:
+-Merch
+-Quiz: Which house are you?
+-Visit us
+-Store Information
+-Make a reservation
+-Buy tickets to experience
+-Socials (Coming Soon)
+

@@ -1,0 +1,19 @@
+Nicole Shafer
+MERN
+
+Project Name:
+Potter's Potions: Bar and Eatery 
+
+Description:
+A website for the upcoming location of Potter's Potions. This is something I want to create in the future.
+
+MVP (Minimum Viable Product) features: 
+-project is on github
+-will include .gitignore
+-CRUD operations
+-Data Validations
+
+Bonus Features:
+
+
+
