@@ -1,11 +1,12 @@
 Nicole Shafer
 MERN
+https://github.com/nicoleshafer/projects-algos/tree/main/Solo_Project
 
 Project Name:
 Potter's Potions: Bar and Eatery 
 
 Description:
-A website for the upcoming location of Potter's Potions. This is something I want to create in the future.
+A website for the upcoming location of Potter's Potions, a new bar and restaurant. This is something I want to create in the future in real life.
 
 MVP (Minimum Viable Product) features: 
 -project is on github
@@ -14,6 +15,7 @@ MVP (Minimum Viable Product) features:
 -Data Validations
 
 Bonus Features:
+Either - application is responsive, uses bootstap or third party API
 
 
 
