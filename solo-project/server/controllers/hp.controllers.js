@@ -16,3 +16,28 @@ module.exports.createForm = (req,res) => {
     res.json(newForms))
     .catch((err) => console.log(err))
 }
+
+module.exports.getFormById = (req, res) =>{
+    const {params} = req;
+    Form.findOne({_id: params._id})
+    .then((form) => res.json(form))
+    .catch(err => console.log(err))
+}
+
+module.exports.updateForm = (req, res) => {
+    Form.findByIdAndUpdate({_id: req.params._id}, req.body, {
+        new:true,
+        runValidators:true,
+    } )
+    .then(updatedForm => res.json(updatedForm))
+    .catch(err =>{
+        // res.json(400).json(err)
+        console.log(err)
+    })
+}
+
+module.exports.deleteForm = (req, res) => {
+    Form.deleteOne({_id: req.params._id})
+    .then((deletedForm) => res.json(deletedForm))
+    .catch(err => console.log(err))
+}
