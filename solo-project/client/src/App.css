@@ -99,6 +99,26 @@
   align-items: center;
 }
 
+.spacing{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:50px;
+  padding:20px;
+}
+
+.form-spacing{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap:10px;
+}
+
+.containerSpacing{
+  display: flex;
+}
 .labelName{
   font-size: 24px;
   margin: 20px 0;
@@ -117,7 +137,7 @@
   margin:15px;
 }
 
-.menu{
+.menu-row{
   display: flex;
   justify-content: center;
   gap: 50px ;
@@ -127,3 +147,4 @@
   display: flex;
   justify-content: center;
 }
+

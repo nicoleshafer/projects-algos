@@ -28,25 +28,67 @@ const Coffee = () => {
             </div>
             <div className='menu'>
             <div className='menu-row'>
-                <p>Dark Wizards Brew</p>
+               <div>
+               <p>Dark Wizards Brew</p>
                 <div className='menu-card'></div>
+                <p>5.00</p>
+               </div>
                 <br />
+
+                <div>
                 <p>Espresso Patronum</p>
                 <div className='menu-card'></div>
+                <p>2.00</p>
+                </div>
                 <br />
+
+                <div>
                 <p>Love Potion Latte</p>
                 <div className='menu-card'></div>
+                <p>5.00</p>
+                </div>
                 <br />
+
+               <div>
+                <p>Muggles Mocha</p>
                 <div className='menu-card'></div>
+                <p>4.00</p>
+               </div>
             </div>
             <div className='menu-row'>
+                <div>
+                    <p>Tri Wizards Tea</p>
+                    <div className='menu-card'></div>
+                    <p>4.00</p>
+                </div>
+                <br />
+
+                <div>
+                    <p>English Breakfast</p>
+                    <div className='menu-card'></div>
+                    <p>3.00</p>
+                </div>
+                <br />
+
+               <div>
+                <p>Hogwarts Favorite</p>
+               <div className='menu-card'></div>
+               <p>5.00</p>
+               </div>
+                <br />
+
+                <div>
+                    <p>Tea</p>
                 <div className='menu-card'></div>
-                <div className='menu-card'></div>
-                <div className='menu-card'></div>
-                <div className='menu-card'></div>
-                <div className='menu-card'></div>
+                <p>2.00</p>
+                </div>
+                <br/>
+
             </div>
             </div>
+
+
+
             <div className='submitBtn-Center'>
             <button onClick={orderOnlineHandler} className='submitbtn'>Order Online</button>
             </div>
