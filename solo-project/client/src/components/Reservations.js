@@ -1,14 +1,37 @@
-import React from 'react';
-import { Link } from "react-router-dom"
+import React, {useState} from 'react';
+import { Link, useNavigate } from "react-router-dom"
 import Bar from './Bar';
 import Coffee from './Coffee';
 import Merch from './Merch';
 import Homepage from './Homepage';
-
+import axios from 'axios'
 
 const Reservations = () => {
+    const navigate = useNavigate();
+
+    const [form, setForm] = useState({
+        firstName:'',
+        lastName:'',
+        email:'',
+        number:'',
+
+    })
+
+    const changeHandler = (e) =>{
+        setForm({...form, [e.target.name]:e.target.value})
+    }
+
+
     const submitHandler = (e) =>{
         e.preventDefault()
+        axios.post('http://localhost:8000/api/form', form)
+        .then((res) => {
+            setForm('')
+            navigate('/confirm')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     return (
@@ -36,19 +59,31 @@ const Reservations = () => {
                     <div className='form-spacing'>
                         <div>
                             <label>First Name:</label>
-                            <input type="text"></input>
+                            <input type="text"
+                            name="firstName"
+                            onChange={changeHandler}
+                            value={form.firstName}></input>
                         </div>
                         <div>
                             <label>Last Name:</label>
-                            <input type="text"></input>
+                            <input type="text"
+                            name = "lastName"
+                            onChange={changeHandler}
+                            value={form.lastName}></input>
                         </div>
                         <div>
                             <label>Email:</label>
-                            <input type="email"></input>
+                            <input type="email"
+                            name="email"
+                            onChange={changeHandler}
+                            value={form.email}></input>
                         </div>
                         <div>
                             <label>Phone Number:</label>
-                            <input type="number"></input>
+                            <input type="number"
+                            name="number"
+                            onChange={changeHandler}
+                            value={form.number}></input>
                         </div>
                     </div>
                     <div className='containerSpacing'>

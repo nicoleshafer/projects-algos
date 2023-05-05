@@ -9,6 +9,7 @@ import Homepage from './components/Homepage';
 import Reservations from './components/Reservations'
 import ComingSoon from './components/ComingSoon';
 import ContactPage from './components/ContactPage';
+import OnlineOrderConfirm from './components/OnlineOrderConfirm';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/contactpage" element={<ContactPage />} />
           <Route path='/order' element={<Reservations/> }/>
           <Route path='/comingsoon' element={<ComingSoon/>} />
+          <Route path='/confirm' element={<OnlineOrderConfirm />} />
         </Routes>
       </BrowserRouter>
     </div>

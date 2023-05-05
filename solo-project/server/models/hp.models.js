@@ -1,12 +1,21 @@
 const mongoose = require('mongoose')
 
 const FormSchema = new mongoose.Schema({
-    name:{
-        type:String
+    firstName: {
+        type: String
     },
+    lastName: {
+        type: String
+    },
+    email: {
+        type: String
+    },
+    phoneNumber:{
+        type: Number
+    }
 
 
-}, {timestamps:true});
+}, { timestamps: true });
 
 const Form = mongoose.model("Form", FormSchema);
 
