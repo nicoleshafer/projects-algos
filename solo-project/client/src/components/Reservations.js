@@ -1,33 +1,36 @@
 import React, {useState} from 'react';
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Bar from './Bar';
 import Coffee from './Coffee';
 import Merch from './Merch';
 import Homepage from './Homepage';
 import axios from 'axios'
 
-const Reservations = () => {
+const Reservations = (props) => {
     const navigate = useNavigate();
+    // const {form,setForm} = props
+    // const [order, setOrder] = useState()
 
-    const [form, setForm] = useState({
+
+    const [order, setOrder] = useState({
         firstName:'',
         lastName:'',
         email:'',
         number:'',
-
+    
     })
-
     const changeHandler = (e) =>{
-        setForm({...form, [e.target.name]:e.target.value})
+        setOrder({...order, [e.target.name]:e.target.value})
     }
-
+    
 
     const submitHandler = (e) =>{
         e.preventDefault()
-        axios.post('http://localhost:8000/api/form', form)
+        axios.post('http://localhost:8000/api/form', order)
         .then((res) => {
-            setForm('')
+            setOrder(res.data)
             navigate('/confirm')
+            
         })
         .catch((err) => {
             console.log(err)
@@ -62,28 +65,28 @@ const Reservations = () => {
                             <input type="text"
                             name="firstName"
                             onChange={changeHandler}
-                            value={form.firstName}></input>
+                            value={order.firstName}></input>
                         </div>
                         <div>
                             <label>Last Name:</label>
                             <input type="text"
                             name = "lastName"
                             onChange={changeHandler}
-                            value={form.lastName}></input>
+                            value={order.lastName}></input>
                         </div>
                         <div>
                             <label>Email:</label>
                             <input type="email"
                             name="email"
                             onChange={changeHandler}
-                            value={form.email}></input>
+                            value={order.email}></input>
                         </div>
                         <div>
                             <label>Phone Number:</label>
                             <input type="number"
                             name="number"
                             onChange={changeHandler}
-                            value={form.number}></input>
+                            value={order.number}></input>
                         </div>
                     </div>
                     <div className='containerSpacing'>
@@ -112,6 +115,22 @@ const Reservations = () => {
                     </div>
                     <button className='submitBtn' onClick={submitHandler}>Place Order</button>
                 </form>
+
+
+
+                {/* <div>
+                {
+                    order.map((form, index) =>{
+                        <div key={form._id}>
+                            <Link to={`/form/${form._id}`} >{form} </Link>
+                        {form}
+                        <Link to={`/form/${form._id}`} className="fontStyles">Edit </Link>
+                        
+                        <button >Delete</button>
+                        </div>
+                    })
+                }
+            </div> */}
             </div>
         </div>
     );

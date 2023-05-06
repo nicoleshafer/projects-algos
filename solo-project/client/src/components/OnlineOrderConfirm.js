@@ -8,36 +8,40 @@ import axios from 'axios'
 
 
 
-const OnlineOrderConfirm = () => {
-    const {_id} = useParams();
+const OnlineOrderConfirm = (props) => {
+    const {_id} = useParams()
     const navigate = useNavigate();
-    const [order, setOrder] = useState([])
-    const [form, setForm] = useState({
-        firstName:'',
-        lastName:'',
-        email:'',
-        number:'',
-
-    })
+    const {form,setForm} = props;
 
 
-
-
+    // const [order, setOrder] = useState({
+    //     firstName:'',
+    //     lastName:'',
+    //     email:'',
+    //     number:'',
+    
+    // })
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/form/${_id}`)
+        axios.get(`http://localhost:8000/api/form/`)
         .then((res) => {
             console.log('line 23', res)
             console.log('line 24', res.data)
-            setOrder(res.data)
+            setForm(res.data.allForm)
         })
         .catch((err) => {
             console.log(err)
         })
     },[])
 
-
-
+    const deleteHandler = (_id) =>{
+        axios.delete(`http://localhost:8000/api/form/${_id}`)
+        .then((res) =>{
+            console.log('line 40', res)
+            setForm(form.filter((order, index)=>order._id !== _id))
+        })
+        .catch((err )=> console.log(err))
+    }
 
     return (
         <div>
@@ -57,12 +61,22 @@ const OnlineOrderConfirm = () => {
                 </div>
             </div>
 
-            <h3>Your order has been placed</h3>
+            <h3>Past orders:</h3>
             <div>
-                <p>{form.firstName}</p>
+            {
+                form.map((order) => (
+                    <div key={order._id} className='border border-dark'>
+                        <p>Name: {order.firstName} {order.lastName}</p>
+                        <p>Order:</p>
+                        <button>Edit</button>
+                        <button onChange={deleteHandler}>Delete</button>
+                    </div>
+                ))
+            }
             </div>
-            <button>Edit your order</button>
-            <button>Delete your order</button>
+
+
+
         </div>
     );
 }
