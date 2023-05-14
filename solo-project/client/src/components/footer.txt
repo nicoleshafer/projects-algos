@@ -1,70 +1,30 @@
-import React from 'react';
-import Homepage from './Homepage';
-import Coffee from './Coffee';
-import Merch from './Merch';
-import { Link, useNavigate } from "react-router-dom"
-import Reservations from './Reservations';
-import ContactPage from './ContactPage';
-import About from './About';
-import location from "../images/location.jpg"
-
-const Bar = () => {
-    const navigate = useNavigate()
+const navigate = useNavigate()
 
     const socialMediaHandler = () => {
-        navigate("/comingsoon")
+        navigate("./ComingSoon")
     }
 
     const githubLink = () => {
         window.location.href = "https://github.com/nicoleshafer"
     }
-    return (
-        <div>
-            <div className='navbar'>
-                <div className='name'>
-                    <h1>Potter's</h1>
-                </div>
-                <div className='middle-title'>
-                <h3 className='title'>Beer Garden</h3>
 
-                </div>
-                <div className='nav-links'>
-                    <Link to="/" element={<Homepage />} className='link'>Home</Link>
-                    <Link to="/coffee" element={<Coffee />} className='link'>Coffee</Link>
-                    <Link to="/merch" element={<Merch />} className='link'>Merch</Link>
-
-                </div>
-            </div>
+import Reservations from './Reservations';
+import ContactPage from './ContactPage';
+import About from './About';
 
 
-            <div className='bodyContainer_nonHomepage'>
-                <div className='container bodyContainer_nonHomepage'>
-                    <img src={location} alt="background" className='background-img'></img>
-                    <div className='text-overlay'>
-                        <h3> Pick your poison</h3>
-                        <hr />
-                        <h4 >Potter's ButterBeer</h4>
-                        <h6>Edinburgh, Scotland</h6>
-                        <h4 >Guinness</h4>
-                        <h6>Dublin, Ireland </h6>
-                        <h4>Black Magic</h4>
-                        <h6>Cornwall, England</h6>
-                        <h4>Black Magic</h4>
-                        <h6>Asheville, North Carolina</h6>
-                    </div>
-                </div>
-            </div>
-
-
-            <div className='footer'>
+ <div className='footer'>
                 <div>
                     <div className='footer-links'>
                         <Link to="/about"
-                            element={<About />}
+                            element={<About/>}
                             className='footer-links'>About</Link>
                         <Link to="/contactpage"
-                            element={<ContactPage />}
+                            element={<ContactPage/>}
                             className='footer-links'>Contact</Link>
+                        {/* <Link to="/contactPage"
+                            element={<ContactPage/>}
+                            className='footer-links'>Contact</Link> */}
                         <Link to='/order'
                             element={<Reservations />}
                             className='footer-links'>Order Online</Link>
@@ -82,10 +42,3 @@ const Bar = () => {
                     </div>
                 </div>
             </div>
-
-
-        </div>
-    );
-}
-
-export default Bar;

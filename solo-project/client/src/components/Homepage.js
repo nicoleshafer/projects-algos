@@ -1,41 +1,93 @@
-import React from 'react';
-import { Link, useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from "react-router-dom"
+import axios from 'axios';
 import Bar from './Bar';
 import Coffee from './Coffee';
 import Merch from './Merch';
 import About from './About';
 import ContactPage from './ContactPage'
 import Reservations from './Reservations';
-// import ComingSoon from './ComingSoon';
-// import redWand from "../images/redWand.jpg"
+import icedcoffee from "../images/icedcoffee.jpg"
+import beers from "../images/beers.jpg"
+import train from "../images/train.jpg"
 
-
-const Homepage = () => {
+const Homepage = (props) => {
+    const { _id } = useParams()
     const navigate = useNavigate()
+    const [isVisible, setIsVisible] = useState(false)
+    const { form, setForm } = props;
+    const [review, setReview] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        review: '',
+
+    })
 
     const socialMediaHandler = () => {
-        navigate("./ComingSoon")
+        navigate("/comingsoon")
     }
-
     const githubLink = () => {
         window.location.href = "https://github.com/nicoleshafer"
     }
+    const reviewHandler = () => {
+        setIsVisible(!isVisible)
+    }
+    const changeHandler = (e) => {
+        setReview({ ...review, [e.target.name]: e.target.value })
+    }
 
-    
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/form/`)
+            .then((res) => {
+                console.log('line 23', res)
+                console.log('line 24', res.data)
+                setForm(res.data.allForm)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [])
+
+    const deleteHandler = (idFromBelow) => {
+        axios.delete(`http://localhost:8000/api/form/${idFromBelow}`)
+            .then((res) => {
+                console.log('line 60', res)
+                setForm(form.filter((reviews, index) => reviews._id !== idFromBelow))
+            })
+            .catch((err) => console.log(err))
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:8000/api/form',
+            review)
+            .then((res) => {
+                setReview(res.data)
+                setIsVisible(false)
+                setReview({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    review: '',
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
     return (
         <div>
-            <div className='entireNav'>
-                <div className='navbar'>
-                    <div className='name'>
-                        <h1>Potter's Potions</h1>
-                    </div>
+            <div className='navbar'>
+                <div className='name'>
+                    <h1>Potter's Potions</h1>
                 </div>
                 <div className='nav-links'>
-                    <div>
-                        <Link to="/bar" element={<Bar />} className='link'>Bar</Link>
-                        <Link to="/coffee" element={<Coffee />} className='link'>Coffee</Link>
-                        <Link to="/merch" element={<Merch />} className='link'>Merch</Link>
-                    </div>
+                    <Link to="/bar" element={<Bar />} className='link'>Bar</Link>
+                    <Link to="/coffee" element={<Coffee />} className='link'>Coffee</Link>
+                    <Link to="/merch" element={<Merch />} className='link'>Merch</Link>
+
                 </div>
             </div>
 
@@ -50,19 +102,141 @@ const Homepage = () => {
 
 
             <div className='bodyContainer'>
-                <div className='column'>
+                <div >
                     <div>
-                        {/* <img className='column' src={redWand} alt="red wand"></img> */}
-                    </div>
-
-                    <div>
-                        Coffee
-
+                        <img src={icedcoffee} alt="coffee" className='column'></img>
+                        <h4 className='homepage-words'>Potions</h4>
                     </div>
 
                 </div>
-                <div className='column'>Bar</div>
-                <div className='column'>Merch</div>
+                <div>
+                    <div>
+                        <img src={beers} alt="beer" className='column'></img>
+                        <h4 className='homepage-words'>Poisons</h4>
+                    </div>
+                </div>
+                <div >
+                    <img src={train} alt="beer" className='column'></img>
+                    <h4 className='homepage-words'>Merch</h4>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div className='space'>{/* empty space */}</div>
+
+
+
+
+            <div className='reviews'>
+                <div className='review-name'>
+                    <h3 className='review-name'>Reviews</h3>
+                    <button type="button" className="btn btn-light" onClick={reviewHandler}>Leave a review</button>
+
+                </div>
+                <div className='review-form'>
+
+                    {isVisible &&
+                        <form className='form'>
+                            <label className='labelName'>Online review</label>
+                            <div className='form-spacing'>
+                                <div>
+                                    <label>First Name:</label>
+                                    <input type="text"
+                                        name="firstName"
+                                        onChange={changeHandler}
+                                        value={review.firstName}></input>
+                                </div>
+                                <div>
+                                    <label>Last Name:</label>
+                                    <input type="text"
+                                        name="lastName"
+                                        onChange={changeHandler}
+                                        value={review.lastName}></input>
+                                </div>
+                                <div>
+                                    <label>Email:</label>
+                                    <input type="email"
+                                        name="email"
+                                        onChange={changeHandler}
+                                        value={review.email}></input>
+                                </div>
+                                <div className='form-review'>
+                                    <textarea placeholder='Write a review'
+                                        name="review"
+                                        onChange={changeHandler}
+                                        value={review.review}
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <button className='submitBtn' onClick={submitHandler}>Submit</button>
+                        </form>}
+
+                </div>
+
+
+
+
+                <div className='reviews-outerbox'>
+                    <div className='reviews-innerbox'>
+                        <div>
+                        <h4>Taylor Smith</h4>
+                        <p>If you love all things magic, Potter's is a must!!</p>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div className='reviews-innerbox'>
+                        <div>
+                        <h4>Alexis Kuszaj</h4>
+                        <p>This place makes me so happy</p>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div className='reviews-innerbox'>
+                        <div>
+                        <h4>Parker Williams</h4>
+                        <p>Best coffee!!</p>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div className='reviews-innerbox'>
+                        <div>
+                        <h4>De Wilson</h4>
+                        <p>Great beers, awesome service!</p>
+                        </div>
+                        <div></div>
+                    </div>
+                    {form.map((reviews) => (
+                        <div key={reviews._id}>
+                            <div className='reviews-innerbox'>
+                                <div>
+                                    <h4>{reviews.firstName} {reviews.lastName}</h4>
+                                    <p>{reviews.review}</p>
+                                </div>
+                                <div>
+                                    <Link to={`/update/${reviews._id}`} 
+                                    className='reviews-button'>Edit </Link>
+                                    
+                                    <button type="button"
+                                        className="reviews-button"
+                                        onClick={() => deleteHandler(reviews._id)}
+                                    >Delete</button>
+                                </div>
+                            </div>
+                        </div>))}
+
+                </div>
+
+
+
+
+
+
+
             </div>
 
 
@@ -81,14 +255,11 @@ const Homepage = () => {
                 <div>
                     <div className='footer-links'>
                         <Link to="/about"
-                            element={<About/>}
+                            element={<About />}
                             className='footer-links'>About</Link>
                         <Link to="/contactpage"
-                            element={<ContactPage/>}
+                            element={<ContactPage />}
                             className='footer-links'>Contact</Link>
-                        {/* <Link to="/contactPage"
-                            element={<ContactPage/>}
-                            className='footer-links'>Contact</Link> */}
                         <Link to='/order'
                             element={<Reservations />}
                             className='footer-links'>Order Online</Link>

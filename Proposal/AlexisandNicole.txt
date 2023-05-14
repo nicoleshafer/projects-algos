@@ -1,0 +1,7 @@
+Alexis Kuszaj & Nicole Shafer
+Stack: JavaScript/MERN
+Github: https://github.com/AlexisKuszaj/TripWizard
+Title: TripWizard Travel
+Description: A website that displays destinations that are Harry Potter Themed.
+MVP: Able to favorite places and keep track of the places youve been. You can also review a location youve been. 
+Bonus: Bootstrap Used 

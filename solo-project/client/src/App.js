@@ -28,17 +28,16 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage/>} />
+          <Route path="/" element={<Homepage form={form} setForm={setForm}/>} />
           <Route path="/bar" element={<Bar/>} />
           <Route path="/merch" element={<Merch/>} />
-          {/* <Route path="/information" element={<About/>} /> */}
           <Route path="/coffee" element={<Coffee/>} />
           <Route path="/about" element={<About />} />
           <Route path="/contactpage" element={<ContactPage />} />
           <Route path='/order' element={<Reservations form={form} setForm={setForm}/> } />
           <Route path='/comingsoon' element={<ComingSoon form={form} setForm={setForm}/>}  />
           <Route path='/confirm' element={<OnlineOrderConfirm form={form} setForm={setForm}/>} />
-          <Route path='/update' element={<Edit />} />
+          <Route path='/update/:_id' element={<Edit />} />
         </Routes>
       </BrowserRouter>
     </div>

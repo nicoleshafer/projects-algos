@@ -10,8 +10,8 @@ const FormSchema = new mongoose.Schema({
     email: {
         type: String
     },
-    phoneNumber:{
-        type: Number
+    review:{
+        type: String
     }
 
 
