@@ -38,7 +38,7 @@ const Homepage = (props) => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/form/`)
+        axios.get(`http://localhost:8000/api/form`)
             .then((res) => {
                 console.log('line 23', res)
                 console.log('line 24', res.data)
@@ -63,8 +63,9 @@ const Homepage = (props) => {
         axios.post('http://localhost:8000/api/form',
             review)
             .then((res) => {
-                setReview(res.data)
                 setIsVisible(false)
+                // setReview(res.data)
+                setForm([...form, res.data])
                 setReview({
                     firstName: '',
                     lastName: '',
@@ -105,19 +106,19 @@ const Homepage = (props) => {
                 <div >
                     <div>
                         <img src={icedcoffee} alt="coffee" className='column'></img>
-                        <h4 className='homepage-words'>Potions</h4>
+                        <Link to="/coffee" element={<Coffee />} className='homepage-words'>Potions</Link>
                     </div>
 
                 </div>
                 <div>
                     <div>
                         <img src={beers} alt="beer" className='column'></img>
-                        <h4 className='homepage-words'>Poisons</h4>
+                        <Link to="/bar" element={<Bar />} className='homepage-words'>Poisons</Link>
                     </div>
                 </div>
                 <div >
                     <img src={train} alt="beer" className='column'></img>
-                    <h4 className='homepage-words'>Merch</h4>
+                    <Link to="/merch" element={<Merch />} className='homepage-words'>Merch</Link>
 
                 </div>
 

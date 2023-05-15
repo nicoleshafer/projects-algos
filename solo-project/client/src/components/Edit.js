@@ -10,7 +10,7 @@ import Merch from './Merch';
 import axios from 'axios';
 
 
-const Edit = () => {
+const Edit = (props) => {
     const navigate = useNavigate()
     const { _id } = useParams()
     // const [isVisible, setIsVisible] = useState(false)
@@ -41,7 +41,7 @@ const Edit = () => {
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
+    },[])
 
 
     const changeHandler = (e) =>{
@@ -50,9 +50,9 @@ const Edit = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:8000/api/form/${_id}`,{
+        axios.put(`http://localhost:8000/api/form/${_id}`,
             review
-        })
+        )
         .then((res)=>{
             console.log("update:line 57", res);
             console.log("update:line 58", res.data);
@@ -60,6 +60,8 @@ const Edit = () => {
         })
         .catch((err) => console.log("update:line 61", err))
     }
+
+
     return (
 
         <div>
@@ -81,7 +83,7 @@ const Edit = () => {
 
             <div className='bodyContainer_nonHomepage'>
 
-                <form className='form'>
+                <form className='form' onSubmit={submitHandler}>
                             <label className='labelName'>Update review for {review.firstName}</label>
                             <div className='form-spacing'>
                                 <div>
@@ -98,7 +100,7 @@ const Edit = () => {
                                     <input type="text"
                                         name="lastName"
                                         onChange={changeHandler}
-                                        value={review.lastName}></input>
+                                        value={review.lastName} />
                                 </div>
                                 <div>
                                     <label>Email:</label>
@@ -116,7 +118,7 @@ const Edit = () => {
                                 </div>
                             </div>
 
-                            <button className='submitBtn' onClick={submitHandler}>Submit</button>
+                            <button className='submitBtn'>Submit</button>
                         </form>
             </div>
 
