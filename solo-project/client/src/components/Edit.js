@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Reservations from './Reservations';
-import ContactPage from './ContactPage';
-import About from './About';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Homepage from './Homepage';
 import Coffee from './Coffee';
@@ -23,15 +20,7 @@ const Edit = (props) => {
         review: '',
 
     })
-
-    const socialMediaHandler = () => {
-        navigate("/comingsoon")
-    }
-
-    const githubLink = () => {
-        window.location.href = "https://github.com/nicoleshafer"
-    }
-
+    
     useEffect(() => {
         axios.get(`http://localhost:8000/api/form/${_id}`)
             .then((res) => {
@@ -148,8 +137,8 @@ const Edit = (props) => {
 
 
 
+        <Footer />
 
-            <Footer/>
 
 
         </div>
