@@ -32,9 +32,8 @@ module.exports.updateForm = (req, res) => {
         runValidators:true,
     } )
     .then(updatedForm => res.json(updatedForm))
-    .catch(err =>{
-        // res.json(400).json(err)
-        console.log(err)
+    .catch((err) => {
+        res.status(400).json(err)
     })
 }
 
