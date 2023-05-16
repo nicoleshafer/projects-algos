@@ -245,13 +245,14 @@
 }
 
 
-.middleText,
-.text-danger{
+.middleText{
   text-align: center;
   padding: 50px;
 
 }
-
+.text-danger{
+  text-align: center;
+}
 textarea{
   width:220px;
   height:90px;
