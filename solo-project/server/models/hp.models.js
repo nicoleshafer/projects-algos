@@ -2,16 +2,28 @@ const mongoose = require('mongoose')
 
 const FormSchema = new mongoose.Schema({
     firstName: {
-        type: String
+        type: String,
+        required:[true, 'Required'],
+        minLength:[2, 'Must be 2 or more characters'],
+    
     },
     lastName: {
-        type: String
+        type: String,
+        required:[true, 'Required'],
+        minLength:[2, 'Must be 2 or more characters'],
+        
     },
     email: {
-        type: String
+        type: String,
+        required:[true, 'Required'],
+        minLength:[3, 'Must be 3 or more characters'],
+    
     },
     review:{
-        type: String
+        type: String,
+        required:[true, 'Required'],
+        minLength:[3, 'Must be 3 or more characters'],
+    
     }
 
 

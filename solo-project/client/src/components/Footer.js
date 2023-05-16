@@ -1,32 +1,32 @@
-const navigate = useNavigate()
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import About from './About';
+import ComingSoon from "./ComingSoon"
 
+const Footer = () => {
+    const navigate = useNavigate()
     const socialMediaHandler = () => {
-        navigate("./ComingSoon")
+        navigate("/comingsoon")
     }
 
     const githubLink = () => {
         window.location.href = "https://github.com/nicoleshafer"
     }
 
-import Reservations from './Reservations';
-import ContactPage from './ContactPage';
-import About from './About';
+
+    return (
+        <div>
 
 
- <div className='footer'>
+            <div className='footer'>
                 <div>
                     <div className='footer-links'>
                         <Link to="/about"
-                            element={<About/>}
+                            element={<About />}
                             className='footer-links'>About</Link>
-                        <Link to="/contactpage"
-                            element={<ContactPage/>}
+                        <Link to="/comingsoon"
                             className='footer-links'>Contact</Link>
-                        {/* <Link to="/contactPage"
-                            element={<ContactPage/>}
-                            className='footer-links'>Contact</Link> */}
-                        <Link to='/order'
-                            element={<Reservations />}
+                        <Link to='/comingsoon'
                             className='footer-links'>Order Online</Link>
                     </div>
                     <div className='footer-social'>
@@ -42,3 +42,8 @@ import About from './About';
                     </div>
                 </div>
             </div>
+        </div>
+    );
+}
+
+export default Footer;

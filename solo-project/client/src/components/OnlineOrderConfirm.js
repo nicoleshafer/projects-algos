@@ -5,7 +5,7 @@ import Bar from './Bar';
 import Merch from './Merch';
 import { Link, useNavigate} from "react-router-dom"
 import axios from 'axios'
-
+import Footer from './Footer';
 
 
 const OnlineOrderConfirm = (props) => {

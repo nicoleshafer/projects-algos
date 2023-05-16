@@ -14,7 +14,9 @@ module.exports.createForm = (req,res) => {
     Form.create(req.body)
     .then((newForms) =>
     res.json(newForms))
-    .catch((err) => console.log(err))
+    .catch((err) => {
+        res.status(400).json(err)
+    })
 }
 
 module.exports.getFormById = (req, res) =>{

@@ -4,6 +4,8 @@ import Coffee from './Coffee';
 import Merch from './Merch';
 import { Link } from "react-router-dom"
 import Bar from './Bar';
+import Footer from './Footer';
+
 
 const ComingSoon = () => {
     return (
@@ -25,8 +27,10 @@ const ComingSoon = () => {
 
 
             <div className='componentContainer'>
-                <p className='comingSoon'>Coming Soon</p>
+                <p className='comingSoon'>Potter's Potions will have more <br/> coming soon!</p>
             </div>
+            <div className='space'></div>
+            <Footer/>
         </div>
     );
 }

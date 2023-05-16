@@ -20,9 +20,6 @@ const Reservations = (props) => {
         window.location.href = "https://github.com/nicoleshafer"
     }
 
-    // const {form,setForm} = props
-    // const [order, setOrder] = useState()
-
 
     const [order, setOrder] = useState({
         firstName: '',
@@ -124,21 +121,6 @@ const Reservations = (props) => {
                     <button className='submitBtn' onClick={submitHandler}>Place Order</button>
                 </form>
 
-
-
-                {/* <div>
-                {
-                    order.map((form, index) =>{
-                        <div key={form._id}>
-                            <Link to={`/form/${form._id}`} >{form} </Link>
-                        {form}
-                        <Link to={`/form/${form._id}`} className="fontStyles">Edit </Link>
-                        
-                        <button >Delete</button>
-                        </div>
-                    })
-                }
-            </div> */}
             </div>
 
 
