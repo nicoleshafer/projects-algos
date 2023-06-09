@@ -132,3 +132,7 @@ section{
   color: gold;
 }
 
+.skills-box{
+  display: flex;
+  gap:30px;
+}

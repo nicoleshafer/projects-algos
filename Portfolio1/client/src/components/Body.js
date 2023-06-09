@@ -89,17 +89,35 @@ const Body = () => {
                                 <div className='temp-box'></div>
                                 <div className='temp-box'></div>
                                 </p> */}
-                        <div className='wrapper'>
-                            <div className='layer bottom'></div>
-                        </div>
+                            <div className='wrapper'>
+                                <div className='layer bottom'></div>
+                            </div>
                         </div>
                     </section>
                     <section className='pageFour'>
                         <div className='section-content'>
                             <h2 className='text-header'>My Skills</h2>
-                            <p className='text-display'>
-                                My Skills
-                            </p>
+
+                            <div className='skills-box'>
+                                <div>
+                                    <h3>JavaScript</h3>
+                                    <p>JavaScript</p>
+                                    <p>HTML</p>
+                                    <p>CSS</p>
+                                    {/* <p>TYPESCRIPT</p> */}
+                                </div>
+                                <div>
+                                    <h3>Frameworks && <br />Libraries</h3>
+                                    <p>HTML</p>
+                                    <p>CSS</p>
+                                </div>
+                                <div><h3>Databases</h3>
+                                    <p>HTML</p>
+                                    <p>CSS</p></div>
+                                <div><h3>Other</h3>
+                                    <p>HTML</p>
+                                    <p>CSS</p></div>
+                            </div>
                         </div>
                         <div className='footer'>
                             Contact
